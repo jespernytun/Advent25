@@ -31,8 +31,14 @@ def checkInterval(start, end):
     tot = 0 # Count number of invalid IDs
     for number in range(start,end+1):
         # Condition 1: Lenght of number is even
-        if len(str(number)) % 2 != 0 or str(number)[:(len(str(number))//2)] != str(number)[len(str(number))//2:] or str(number)[0] == 0:
-            pass
+        if len(str(number)) % 2 != 0:
+            continue
+        # Condition 2: Slice one equal to slice two
+        if str(number)[:(len(str(number))//2)] != str(number)[len(str(number))//2:]:
+            continue
+        # Condition 3: Number does not start with a zero
+        if str(number)[0]== 0:
+            continue
         else:
             tot += int(str(number)) # All conditions met, therefor number is invalid
             
@@ -52,8 +58,14 @@ def main():
         invalids +=  checkInterval(starts[i], ends[i])
     print(f"The sum  of invalids in this document is {invalids}")
 
+    
 #----------------------------------------------------------------------------
 # Part 2: Generalized, multiple cuts
 #----------------------------------------------------------------------------
-    
+
+    # We reinitialise all our values
+    starts, ends = getIntervals()
+    invalids = 0
+
+
 main()
