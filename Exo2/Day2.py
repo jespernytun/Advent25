@@ -15,8 +15,6 @@ def getIntervals():
     f = open("Day2.txt") # We open todays file
     intervals = re.split(",", str(f.read())) # We split all the intervals
     
-    
-
     starts = [] # Array to store inverval starts
     ends = [] # Array to store inverval ends    
     for i in range(len(intervals)):
@@ -73,10 +71,7 @@ def findCuts(number):
             
     return 0 # Number has been tested, we return 0
             
-            
-    
-                   
-
+# Same as checkinterval but generalized for part 2   
 def checkIntervalGeneralized(start, end):
     tot = 0 # Count number of invalid IDs
 
@@ -108,14 +103,9 @@ def main():
 # Part 2: Generalized, multiple cuts
 #----------------------------------------------------------------------------
 
-    # We reinitialise all our values
-    starts, ends = getIntervals()
-    invalids = 0
-
+    invalids = 0 # Reset invalids
     for i in range(len(starts)):
         invalids +=  checkIntervalGeneralized(starts[i], ends[i])        
     print(f"The sum  of all generalized invalids in this document is {invalids}")
-    
-
 
 main()
